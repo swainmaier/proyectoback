@@ -1,0 +1,46 @@
+{
+    "name": "Temporada",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cantCapitulos",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "duracionTotal",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "capitulo",
+            "otherEntityRelationshipName": "temporada",
+            "relationshipName": "capitulo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "contenido",
+            "otherEntityRelationshipName": "temporada",
+            "relationshipName": "contenido",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200213142200",
+    "entityTableName": "temporada",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

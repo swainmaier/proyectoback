@@ -1,0 +1,32 @@
+{
+    "name": "Trailer",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "contenido",
+            "otherEntityRelationshipName": "trailer",
+            "relationshipName": "contenido",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200213142300",
+    "entityTableName": "trailer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

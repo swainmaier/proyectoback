@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="proyecto">
+            <h2><span>Proyecto</span> {{ proyecto.titulo }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Titulo</span></dt>
+                <dd>
+                    <span>{{ proyecto.titulo }}</span>
+                </dd>
+                <dt><span>Sumary</span></dt>
+                <dd>
+                    <span>{{ proyecto.sumary }}</span>
+                </dd>
+                <dt><span>Slogan</span></dt>
+                <dd>
+                    <span>{{ proyecto.slogan }}</span>
+                </dd>
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{ proyecto.code }}</span>
+                </dd>
+                <dt><span>Fecha Pub</span></dt>
+                <dd>
+                    <span>{{ proyecto.fechaPub }}</span>
+                </dd>
+                <dt><span>Sinopsis</span></dt>
+                <dd>
+                    <span>{{ proyecto.sinopsis }}</span>
+                </dd>
+                <dt><span>Storyline</span></dt>
+                <dd>
+                    <span>{{ proyecto.storyline }}</span>
+                </dd>
+                <dt><span>Logline</span></dt>
+                <dd>
+                    <span>{{ proyecto.logline }}</span>
+                </dd>
+                <dt><span>Imagen</span></dt>
+                <dd>
+                    <div *ngIf="proyecto.imagen">
+                        <a (click)="openFile(proyecto.imagenContentType!, proyecto.imagen)">
+                            <img [src]="'data:' + proyecto.imagenContentType + ';base64,' + proyecto.imagen" style="max-width: 100%;" alt="proyecto image"/>
+                        </a>
+                        {{ proyecto.imagenContentType }}, {{ byteSize(proyecto.imagen) }}
+                    </div>
+                </dd>
+                <dt><span>Estado Proyecto</span></dt>
+                <dd>
+                    <div *ngIf="proyecto.estadoProyecto">
+                        <a [routerLink]="['/estado-proyecto', proyecto.estadoProyecto?.id, 'view']">{{ proyecto.estadoProyecto?.titulo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Target</span></dt>
+                <dd>
+                    <div *ngIf="proyecto.target">
+                        <a [routerLink]="['/target', proyecto.target?.id, 'view']">{{ proyecto.target?.titulo }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/proyecto', proyecto.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

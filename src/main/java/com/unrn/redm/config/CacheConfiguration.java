@@ -45,6 +45,31 @@ public class CacheConfiguration {
             createCache(cm, com.unrn.redm.domain.User.class.getName());
             createCache(cm, com.unrn.redm.domain.Authority.class.getName());
             createCache(cm, com.unrn.redm.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.unrn.redm.domain.Proyecto.class.getName());
+            createCache(cm, com.unrn.redm.domain.Proyecto.class.getName() + ".contenidos");
+            createCache(cm, com.unrn.redm.domain.Capitulo.class.getName());
+            createCache(cm, com.unrn.redm.domain.Contenido.class.getName());
+            createCache(cm, com.unrn.redm.domain.Contenido.class.getName() + ".temporadas");
+            createCache(cm, com.unrn.redm.domain.Contenido.class.getName() + ".trailers");
+            createCache(cm, com.unrn.redm.domain.Contenido.class.getName() + ".teasers");
+            createCache(cm, com.unrn.redm.domain.Temporada.class.getName());
+            createCache(cm, com.unrn.redm.domain.Temporada.class.getName() + ".capitulos");
+            createCache(cm, com.unrn.redm.domain.Trailer.class.getName());
+            createCache(cm, com.unrn.redm.domain.Teaser.class.getName());
+            createCache(cm, com.unrn.redm.domain.EstadoProyecto.class.getName());
+            createCache(cm, com.unrn.redm.domain.EstadoProyecto.class.getName() + ".proyectos");
+            createCache(cm, com.unrn.redm.domain.Target.class.getName());
+            createCache(cm, com.unrn.redm.domain.Target.class.getName() + ".proyectos");
+            createCache(cm, com.unrn.redm.domain.EstadoContenido.class.getName());
+            createCache(cm, com.unrn.redm.domain.EstadoContenido.class.getName() + ".contenidos");
+            createCache(cm, com.unrn.redm.domain.Plataforma.class.getName());
+            createCache(cm, com.unrn.redm.domain.Plataforma.class.getName() + ".contenidos");
+            createCache(cm, com.unrn.redm.domain.Formato.class.getName());
+            createCache(cm, com.unrn.redm.domain.Formato.class.getName() + ".contenidos");
+            createCache(cm, com.unrn.redm.domain.Genero.class.getName());
+            createCache(cm, com.unrn.redm.domain.Genero.class.getName() + ".contenidos");
+            createCache(cm, com.unrn.redm.domain.SubGenero.class.getName());
+            createCache(cm, com.unrn.redm.domain.SubGenero.class.getName() + ".generos");
             // jhipster-needle-ehcache-add-entry
         };
     }

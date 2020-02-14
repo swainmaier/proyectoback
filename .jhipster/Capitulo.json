@@ -1,0 +1,52 @@
+{
+    "name": "Capitulo",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sinopsis",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "caratula",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duracion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "vimeoID",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "temporada",
+            "otherEntityRelationshipName": "capitulo",
+            "relationshipName": "temporada",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200213142000",
+    "entityTableName": "capitulo",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

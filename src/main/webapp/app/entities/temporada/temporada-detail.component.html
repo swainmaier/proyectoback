@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="temporada">
+            <h2><span>Temporada</span> {{ temporada.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Titulo</span></dt>
+                <dd>
+                    <span>{{ temporada.titulo }}</span>
+                </dd>
+                <dt><span>Numero</span></dt>
+                <dd>
+                    <span>{{ temporada.numero }}</span>
+                </dd>
+                <dt><span>Cant Capitulos</span></dt>
+                <dd>
+                    <span>{{ temporada.cantCapitulos }}</span>
+                </dd>
+                <dt><span>Duracion Total</span></dt>
+                <dd>
+                    <span>{{ temporada.duracionTotal }}</span>
+                </dd>
+                <dt><span>Contenido</span></dt>
+                <dd>
+                    <div *ngIf="temporada.contenido">
+                        <a [routerLink]="['/contenido', temporada.contenido?.id, 'view']">{{ temporada.contenido?.titulo }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/temporada', temporada.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+    "name": "Formato",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contenido",
+            "otherEntityRelationshipName": "formato",
+            "relationshipName": "contenido"
+        }
+    ],
+    "changelogDate": "20200213142900",
+    "entityTableName": "formato",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

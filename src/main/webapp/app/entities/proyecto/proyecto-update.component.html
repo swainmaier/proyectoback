@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-proyecto-heading">Create or edit a Proyecto</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_titulo">Titulo</label>
+                    <input type="text" class="form-control" name="titulo" id="field_titulo"
+                           formControlName="titulo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sumary">Sumary</label>
+                    <input type="text" class="form-control" name="sumary" id="field_sumary"
+                           formControlName="sumary"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_slogan">Slogan</label>
+                    <input type="text" class="form-control" name="slogan" id="field_slogan"
+                           formControlName="slogan"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaPub">Fecha Pub</label>
+                    <input type="date" class="form-control" name="fechaPub" id="field_fechaPub"
+                           formControlName="fechaPub"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sinopsis">Sinopsis</label>
+                    <input type="text" class="form-control" name="sinopsis" id="field_sinopsis"
+                           formControlName="sinopsis"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_storyline">Storyline</label>
+                    <input type="text" class="form-control" name="storyline" id="field_storyline"
+                           formControlName="storyline"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_logline">Logline</label>
+                    <input type="text" class="form-control" name="logline" id="field_logline"
+                           formControlName="logline"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imagen">Imagen</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imagenContentType')!.value + ';base64,' + editForm.get('imagen')!.value" style="max-height: 100px;" *ngIf="editForm.get('imagen')!.value" alt="proyecto image"/>
+                        <div *ngIf="editForm.get('imagen')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imagenContentType')!.value }}, {{ byteSize(editForm.get('imagen')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('imagen', 'imagenContentType', 'file_imagen')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imagen" (change)="setFileData($event, 'imagen', true)" accept="image/*"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imagen" id="field_imagen"
+                           formControlName="imagen"/>
+                    <input type="hidden" class="form-control" name="imagenContentType" id="field_imagenContentType"
+                           formControlName="imagenContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoProyecto">Estado Proyecto</label>
+                    <select class="form-control" id="field_estadoProyecto" name="estadoProyecto" formControlName="estadoProyecto">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoProyectoOption.id === editForm.get('estadoProyecto')!.value?.id ? editForm.get('estadoProyecto')!.value : estadoProyectoOption" *ngFor="let estadoProyectoOption of estadoproyectos; trackBy: trackById">{{ estadoProyectoOption.titulo }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_target">Target</label>
+                    <select class="form-control" id="field_target" name="target" formControlName="target">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="targetOption.id === editForm.get('target')!.value?.id ? editForm.get('target')!.value : targetOption" *ngFor="let targetOption of targets; trackBy: trackById">{{ targetOption.titulo }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+    "name": "Target",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "proyecto",
+            "otherEntityRelationshipName": "target",
+            "relationshipName": "proyecto"
+        }
+    ],
+    "changelogDate": "20200213142600",
+    "entityTableName": "target",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

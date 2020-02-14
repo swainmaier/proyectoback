@@ -1,0 +1,74 @@
+{
+    "name": "Proyecto",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sumary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "slogan",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaPub",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sinopsis",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storyline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imagen",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contenido",
+            "otherEntityRelationshipName": "proyecto",
+            "relationshipName": "contenido"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "estadoProyecto",
+            "otherEntityRelationshipName": "proyecto",
+            "relationshipName": "estadoProyecto",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "target",
+            "otherEntityRelationshipName": "proyecto",
+            "relationshipName": "target",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200213141900",
+    "entityTableName": "proyecto",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

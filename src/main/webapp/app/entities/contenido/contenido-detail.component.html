@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contenido">
+            <h2><span>Contenido</span> {{ contenido.titulo }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Titulo</span></dt>
+                <dd>
+                    <span>{{ contenido.titulo }}</span>
+                </dd>
+                <dt><span>Cant Temporadas</span></dt>
+                <dd>
+                    <span>{{ contenido.cantTemporadas }}</span>
+                </dd>
+                <dt><span>Fecha Publicacion</span></dt>
+                <dd>
+                    <span>{{ contenido.fechaPublicacion }}</span>
+                </dd>
+                <dt><span>Caratula</span></dt>
+                <dd>
+                    <span>{{ contenido.caratula }}</span>
+                </dd>
+                <dt><span>Proyecto</span></dt>
+                <dd>
+                    <div *ngIf="contenido.proyecto">
+                        <a [routerLink]="['/proyecto', contenido.proyecto?.id, 'view']">{{ contenido.proyecto?.titulo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Estado Contenido</span></dt>
+                <dd>
+                    <div *ngIf="contenido.estadoContenido">
+                        <a [routerLink]="['/estado-contenido', contenido.estadoContenido?.id, 'view']">{{ contenido.estadoContenido?.titulo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Formato</span></dt>
+                <dd>
+                    <div *ngIf="contenido.formato">
+                        <a [routerLink]="['/formato', contenido.formato?.id, 'view']">{{ contenido.formato?.titulo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Genero</span></dt>
+                <dd>
+                    <div *ngIf="contenido.genero">
+                        <a [routerLink]="['/genero', contenido.genero?.id, 'view']">{{ contenido.genero?.titulo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Plataforma</span></dt>
+                <dd>
+                    <div *ngIf="contenido.plataforma">
+                        <a [routerLink]="['/plataforma', contenido.plataforma?.id, 'view']">{{ contenido.plataforma?.titulo }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contenido', contenido.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

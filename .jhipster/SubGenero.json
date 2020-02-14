@@ -1,0 +1,27 @@
+{
+    "name": "SubGenero",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "genero",
+            "otherEntityRelationshipName": "subGenero",
+            "relationshipName": "genero"
+        }
+    ],
+    "changelogDate": "20200213143100",
+    "entityTableName": "sub_genero",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

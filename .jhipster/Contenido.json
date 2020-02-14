@@ -1,0 +1,86 @@
+{
+    "name": "Contenido",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cantTemporadas",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fechaPublicacion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "caratula",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "temporada",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "temporada"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "trailer",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "trailer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "teaser",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "teaser"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "proyecto",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "proyecto",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "estadoContenido",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "estadoContenido",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "formato",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "formato",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "genero",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "genero",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "plataforma",
+            "otherEntityRelationshipName": "contenido",
+            "relationshipName": "plataforma",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200213142100",
+    "entityTableName": "contenido",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span>Proyectos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-proyecto" [routerLink]="['/proyecto/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Proyecto
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="proyectos?.length === 0">
+        <span>No proyectos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="proyectos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="titulo"><span>Titulo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sumary"><span>Sumary</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="slogan"><span>Slogan</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="code"><span>Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechaPub"><span>Fecha Pub</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sinopsis"><span>Sinopsis</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="storyline"><span>Storyline</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="logline"><span>Logline</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imagen"><span>Imagen</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estadoProyecto.id"><span>Estado Proyecto</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="target.id"><span>Target</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let proyecto of proyectos ;trackBy: trackId">
+                    <td><a [routerLink]="['/proyecto', proyecto.id, 'view']">{{ proyecto.id }}</a></td>
+                    <td>{{ proyecto.titulo }}</td>
+                    <td>{{ proyecto.sumary }}</td>
+                    <td>{{ proyecto.slogan }}</td>
+                    <td>{{ proyecto.code }}</td>
+                    <td>{{ proyecto.fechaPub }}</td>
+                    <td>{{ proyecto.sinopsis }}</td>
+                    <td>{{ proyecto.storyline }}</td>
+                    <td>{{ proyecto.logline }}</td>
+                    <td>
+                        <a *ngIf="proyecto.imagen" (click)="openFile(proyecto.imagenContentType, proyecto.imagen)">
+                            <img [src]="'data:' + proyecto.imagenContentType + ';base64,' + proyecto.imagen" style="max-height: 30px;" alt="proyecto image"/>
+                        </a>
+                        <span *ngIf="proyecto.imagen">{{ proyecto.imagenContentType }}, {{ byteSize(proyecto.imagen) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="proyecto.estadoProyecto">
+                            <a [routerLink]="['/estado-proyecto', proyecto.estadoProyecto?.id, 'view']" >{{ proyecto.estadoProyecto?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="proyecto.target">
+                            <a [routerLink]="['/target', proyecto.target?.id, 'view']" >{{ proyecto.target?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/proyecto', proyecto.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/proyecto', proyecto.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(proyecto)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

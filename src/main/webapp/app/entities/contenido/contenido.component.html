@@ -1,0 +1,107 @@
+<div>
+    <h2 id="page-heading">
+        <span>Contenidos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contenido" [routerLink]="['/contenido/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Contenido
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="contenidos?.length === 0">
+        <span>No contenidos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="contenidos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="titulo"><span>Titulo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cantTemporadas"><span>Cant Temporadas</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechaPublicacion"><span>Fecha Publicacion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="caratula"><span>Caratula</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="proyecto.id"><span>Proyecto</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estadoContenido.id"><span>Estado Contenido</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="formato.id"><span>Formato</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="genero.id"><span>Genero</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="plataforma.id"><span>Plataforma</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contenido of contenidos ;trackBy: trackId">
+                    <td><a [routerLink]="['/contenido', contenido.id, 'view']">{{ contenido.id }}</a></td>
+                    <td>{{ contenido.titulo }}</td>
+                    <td>{{ contenido.cantTemporadas }}</td>
+                    <td>{{ contenido.fechaPublicacion }}</td>
+                    <td>{{ contenido.caratula }}</td>
+                    <td>
+                        <div *ngIf="contenido.proyecto">
+                            <a [routerLink]="['/proyecto', contenido.proyecto?.id, 'view']" >{{ contenido.proyecto?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contenido.estadoContenido">
+                            <a [routerLink]="['/estado-contenido', contenido.estadoContenido?.id, 'view']" >{{ contenido.estadoContenido?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contenido.formato">
+                            <a [routerLink]="['/formato', contenido.formato?.id, 'view']" >{{ contenido.formato?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contenido.genero">
+                            <a [routerLink]="['/genero', contenido.genero?.id, 'view']" >{{ contenido.genero?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contenido.plataforma">
+                            <a [routerLink]="['/plataforma', contenido.plataforma?.id, 'view']" >{{ contenido.plataforma?.titulo }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/contenido', contenido.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/contenido', contenido.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(contenido)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="contenidos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

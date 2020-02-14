@@ -1,0 +1,27 @@
+{
+    "name": "EstadoProyecto",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "proyecto",
+            "otherEntityRelationshipName": "estadoProyecto",
+            "relationshipName": "proyecto"
+        }
+    ],
+    "changelogDate": "20200213142500",
+    "entityTableName": "estado_proyecto",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

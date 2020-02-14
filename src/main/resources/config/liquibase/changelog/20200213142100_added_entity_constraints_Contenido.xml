@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Contenido.
+    -->
+    <changeSet id="20200213142100-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="proyecto_id"
+                                 baseTableName="contenido"
+                                 constraintName="fk_contenido_proyecto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="proyecto"/>
+
+        <addForeignKeyConstraint baseColumnNames="estado_contenido_id"
+                                 baseTableName="contenido"
+                                 constraintName="fk_contenido_estado_contenido_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="estado_contenido"/>
+
+        <addForeignKeyConstraint baseColumnNames="formato_id"
+                                 baseTableName="contenido"
+                                 constraintName="fk_contenido_formato_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formato"/>
+
+        <addForeignKeyConstraint baseColumnNames="genero_id"
+                                 baseTableName="contenido"
+                                 constraintName="fk_contenido_genero_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="genero"/>
+
+        <addForeignKeyConstraint baseColumnNames="plataforma_id"
+                                 baseTableName="contenido"
+                                 constraintName="fk_contenido_plataforma_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="plataforma"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-capitulo-heading">Create or edit a Capitulo</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_titulo">Titulo</label>
+                    <input type="text" class="form-control" name="titulo" id="field_titulo"
+                           formControlName="titulo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numero">Numero</label>
+                    <input type="number" class="form-control" name="numero" id="field_numero"
+                           formControlName="numero"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sinopsis">Sinopsis</label>
+                    <input type="text" class="form-control" name="sinopsis" id="field_sinopsis"
+                           formControlName="sinopsis"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_logline">Logline</label>
+                    <input type="text" class="form-control" name="logline" id="field_logline"
+                           formControlName="logline"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_caratula">Caratula</label>
+                    <input type="text" class="form-control" name="caratula" id="field_caratula"
+                           formControlName="caratula"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_duracion">Duracion</label>
+                    <input type="number" class="form-control" name="duracion" id="field_duracion"
+                           formControlName="duracion"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vimeoID">Vimeo ID</label>
+                    <input type="text" class="form-control" name="vimeoID" id="field_vimeoID"
+                           formControlName="vimeoID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_temporada">Temporada</label>
+                    <select class="form-control" id="field_temporada" name="temporada" formControlName="temporada">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="temporadaOption.id === editForm.get('temporada')!.value?.id ? editForm.get('temporada')!.value : temporadaOption" *ngFor="let temporadaOption of temporadas; trackBy: trackById">{{ temporadaOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

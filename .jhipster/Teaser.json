@@ -1,0 +1,32 @@
+{
+    "name": "Teaser",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "contenido",
+            "otherEntityRelationshipName": "teaser",
+            "relationshipName": "contenido",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200213142400",
+    "entityTableName": "teaser",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

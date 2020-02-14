@@ -1,0 +1,27 @@
+{
+    "name": "Plataforma",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contenido",
+            "otherEntityRelationshipName": "plataforma",
+            "relationshipName": "contenido"
+        }
+    ],
+    "changelogDate": "20200213142800",
+    "entityTableName": "plataforma",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
